@@ -1,0 +1,20 @@
+﻿Python
+
+pycache/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+
+Virtual environment
+
+venv/
+
+Environment variables
+
+.env
+
+FAISS vectorstore or cache
+
+vectordb/
