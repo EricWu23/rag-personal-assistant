@@ -35,16 +35,25 @@ def chunk_documents(documents):
 
 # 可选模型："openai"（默认）或 "local"
 def embed_documents(chunks, model_type="local"):
-    if model_type == "openai":
-        from langchain_openai import OpenAIEmbeddings
-        embeddings = OpenAIEmbeddings()
-        print("🔌 Using OpenAIEmbeddings...")
-    elif model_type == "local":
+    print(f"📦 Embedding {len(chunks)} chunks...")
+
+    if model_type == "local":
         from langchain_huggingface import HuggingFaceEmbeddings
-        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         print("💻 Using HuggingFace local embeddings (all-MiniLM-L6-v2)...")
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     else:
-        raise ValueError(f"❌ Unsupported model_type: {model_type}")
+        from langchain_openai import OpenAIEmbeddings
+        print("🌐 Using OpenAI embeddings...")
+        embeddings = OpenAIEmbeddings()
+
+    vectordb = FAISS.from_documents(chunks, embeddings)
+
+    print(f"🧠 FAISS index size: {vectordb.index.ntotal}")  # 👈 新增打印
+
+    VECTORDB_DIR.mkdir(exist_ok=True, parents=True)
+    vectordb.save_local(str(VECTORDB_DIR))
+    print(f"✅ Vector DB saved to: {VECTORDB_DIR}")
+    return vectordb
 
 def main():
     print("🚀 Starting ingestion pipeline...")
