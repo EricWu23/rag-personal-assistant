@@ -18,3 +18,5 @@ Environment variables
 FAISS vectorstore or cache
 
 vectordb/
+intermediate
+vector_db
