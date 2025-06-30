@@ -1,6 +1,6 @@
 from pathlib import Path
 from langchain.vectorstores import FAISS
-from .config import VECTORDB_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME
+from rag_assistant.config import VECTORDB_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME
 
 def get_embedding_model():
     if EMBEDDING_MODEL_TYPE == "openai":
@@ -16,7 +16,9 @@ def get_embedding_model():
 
 def load_vectorstore():
     embeddings = get_embedding_model()
-    vectordb = FAISS.load_local(str(VECTORDB_DIR), embeddings)
+    vectordb = FAISS.load_local(str(VECTORDB_DIR),
+                                embeddings,
+                                allow_dangerous_deserialization=True)
     return vectordb
 
 def search(query: str, top_k=3):
