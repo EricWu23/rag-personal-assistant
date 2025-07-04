@@ -8,7 +8,7 @@ from rag_assistant.llm_router import get_llm
 
 def get_qa_chain():
     vectordb = load_vectorstore()
-    retriever = vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 10})
+    retriever = vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 10, "lambda_mult": 0.5})
 
     prompt = PromptTemplate(
         input_variables=["context", "question"],
