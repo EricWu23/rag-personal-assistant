@@ -3,7 +3,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from .config import DATA_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME, VECTORDB_DIR
+from rag_assistant.config import LLM_TYPE, LOCAL_MODEL_PATH,DATA_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME, VECTORDB_DIR
 
 from dotenv import load_dotenv
 import os
