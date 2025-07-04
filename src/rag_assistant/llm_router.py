@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain.llms import HuggingFaceHub
 from langchain_core.language_models import BaseLanguageModel
-from rag_assistant.config import LLM_TYPE, LOCAL_MODEL_PATH, OPENAI_API_KEY, OPENAI_MODEL_NAME
+from rag_assistant.config import LLM_TYPE, LOCAL_MODEL_PATH, OPENAI_API_KEY, OPENAI_MODEL_NAME,LLAMA_CPP_N_CTX,LLAMA_CPP_N_GPU_LAYERS
 from openai import OpenAIError
 import os
 
@@ -28,7 +28,8 @@ def _load_local_llm():
         print("💻 Using Local GGUF Model:", LOCAL_MODEL_PATH)
         return LlamaCpp(
             model_path=str(LOCAL_MODEL_PATH),
-            n_ctx=2048,
+            n_ctx=LLAMA_CPP_N_CTX,
+            n_gpu_layers=LLAMA_CPP_N_GPU_LAYERS,
             temperature=0.7,
             top_p=0.95,
             max_tokens=512,

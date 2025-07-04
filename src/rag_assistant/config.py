@@ -21,10 +21,12 @@ EMBEDDING_MODEL_TYPE = "huggingface"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 # 模型类型: "openai" / "huggingface" / "local"
-LLM_TYPE = "openai"
+LLM_TYPE = "local"
 
 # 本地 GGUF 模型路径
-LOCAL_MODEL_PATH = Path("models") / "mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+LOCAL_MODEL_PATH = PROJECT_ROOT/"models"/"mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+LLAMA_CPP_N_CTX = 4096
+LLAMA_CPP_N_GPU_LAYERS = 0
 
 # OpenAI 设置
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
