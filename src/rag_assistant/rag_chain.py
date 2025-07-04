@@ -5,6 +5,7 @@ from rag_assistant.retrieve import load_vectorstore
 from rag_assistant.config import *
 from rag_assistant.llm_router import get_llm
 
+
 def get_qa_chain():
     vectordb = load_vectorstore()
     retriever = vectordb.as_retriever(search_kwargs={"k": 3})
@@ -29,6 +30,6 @@ def get_qa_chain():
         chain_type="stuff",
         chain_type_kwargs={"prompt": prompt},
         return_source_documents=True,
-        verbose=True
+        verbose=VERBOSE_MODE
     )
     return qa_chain
