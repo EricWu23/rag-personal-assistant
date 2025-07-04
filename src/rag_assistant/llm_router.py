@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from langchain.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceHub
 from langchain_core.language_models import BaseLanguageModel
 from rag_assistant.config import LLM_TYPE, LOCAL_MODEL_PATH, OPENAI_API_KEY, OPENAI_MODEL_NAME,LLAMA_CPP_N_CTX,LLAMA_CPP_N_GPU_LAYERS
 from openai import OpenAIError

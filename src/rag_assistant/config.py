@@ -21,7 +21,7 @@ EMBEDDING_MODEL_TYPE = "huggingface"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 # 模型类型: "openai" / "huggingface" / "local"
-LLM_TYPE = "local"
+LLM_TYPE = "openai"
 
 # 本地 GGUF 模型路径
 LOCAL_MODEL_PATH = PROJECT_ROOT/"models"/"mistral-7b-instruct-v0.1.Q4_K_M.gguf"

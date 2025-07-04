@@ -1,5 +1,5 @@
 from pathlib import Path
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from rag_assistant.config import VECTORDB_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME
 
 def get_embedding_model():
