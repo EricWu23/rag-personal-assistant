@@ -4,3 +4,8 @@ openai
 faiss-cpu
 python-dotenv
 pypdf
+llama-cpp-python>=0.2.24
+fastapi>=0.100
+uvicorn>=0.22
+gunicorn
+pydantic>=1.10,<2
