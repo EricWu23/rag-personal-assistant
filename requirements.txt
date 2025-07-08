@@ -1,3 +1,7 @@
+# Base compatibility pin
+packaging==24.0
+
+# Core dependencies
 langchain
 langchain-community
 openai
