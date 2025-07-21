@@ -26,7 +26,7 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv venv
+          python -m venv antenv
           source venv/bin/activate
       
       - name: Generate pinned requirements.txt
@@ -36,6 +36,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          source antenv/bin/activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         
