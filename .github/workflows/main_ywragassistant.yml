@@ -1,8 +1,9 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
 name: Build and deploy Python app to Azure Web App - ywragassistant
 
-permissions:
-  id-token: write   # 用于 OIDC 身份认证（Azure Login）
-  contents: read    # 用于 actions/checkout 等操作
 on:
   push:
     branches:
@@ -13,7 +14,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
+
 
     steps:
       - name: Checkout code
