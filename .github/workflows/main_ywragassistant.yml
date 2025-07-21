@@ -1,5 +1,8 @@
 name: Build and deploy Python app to Azure Web App - ywragassistant
 
+permissions:
+  id-token: write   # 用于 OIDC 身份认证（Azure Login）
+  contents: read    # 用于 actions/checkout 等操作
 on:
   push:
     branches:
