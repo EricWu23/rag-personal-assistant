@@ -24,7 +24,7 @@ setup(
         "fastapi>=0.100",
         "uvicorn>=0.22",
         "gunicorn",
-        "pydantic>=1.10,<2",
+        "pydantic>=1.10,<3",
     ],
     author="Yujiang Wu",
     description="A RAG-based personal assistant using LangChain and OpenAI",
