@@ -1,0 +1,32 @@
+# Ignore virtual environment
+.venv
+
+# Ignore Python cache
+__pychache__/
+*.pyc
+*.pyo
+
+# Ignore Jupyter notebooks outputs
+.ipynb_checkpoints/
+
+# Git
+.git/
+.github/
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore local development files
+.data/
+.intermediate/
+.notebooks/
+.tools/
+
+
+# privacy
+.env
+*.log
+
+*?download = true
+*.zip

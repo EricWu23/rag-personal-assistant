@@ -4,14 +4,13 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 
 def main():
-    index_path = Path("faiss_index.pkl")
     llm = ChatOpenAI(model="gpt-3.5-turbo")
     print("输入问题(q退出)：")
     while True:
         query = input(">> ")
         if query.lower() in ("q", "quit", "exit"):
             break
-        docs = search(query, index_path)
+        docs = search(query, top_k=3)
         context = "\n\n".join(d.page_content for d in docs)
         prompt = [
             SystemMessage(content="你是一个知识问答助手，基于以下内容回答问题：\n" + context),
