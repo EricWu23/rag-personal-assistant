@@ -3,13 +3,9 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from rag_assistant.config import LLM_TYPE, LOCAL_MODEL_PATH,DATA_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME, VECTORDB_DIR
-
-from dotenv import load_dotenv
+from rag_assistant.config import DATA_DIR, EMBEDDING_MODEL_TYPE, EMBEDDING_MODEL_NAME, VECTORDB_DIR
+from tqdm import tqdm
 import os
-
-load_dotenv()  # 读取 .env 文件，确保环境变量加载
-print("OpenAI API Key:", os.getenv("OPENAI_API_KEY"))  # 打印检查一下
 
 
 def load_documents(data_dir: Path):
@@ -44,9 +40,11 @@ def get_embedding_model():
     else:
         raise ValueError(f"❌ Unsupported embedding model type: {EMBEDDING_MODEL_TYPE}")
     
-def embed_documents(chunks):
+def embed_documents(chunks,show_progress=True):
     print(f"📦 Embedding {len(chunks)} chunks...")
     embeddings = get_embedding_model()
+    if show_progress:
+        chunks = tqdm(chunks,desc="🔢 Embedding chunks")
     vectordb = FAISS.from_documents(chunks, embeddings)
 
     vector_path = Path(VECTORDB_DIR)
@@ -61,7 +59,7 @@ def main():
     print(f"📄 Loaded {len(docs)} documents")
     chunks = chunk_documents(docs)
     print(f"✂️  Split into {len(chunks)} chunks")
-    embed_documents(chunks)
+    embed_documents(chunks,show_progress=True)
     print("🚀 Ingestion completed!")
 
 if __name__ == "__main__":

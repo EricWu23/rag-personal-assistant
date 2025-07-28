@@ -21,6 +21,7 @@ COPY vector_db/ vector_db/
 
 # Environment variable to trigger auto-download
 ENV AUTO_DOWNLOAD_MODEL=true
+ENV UPDATE_KNOWLEDGE_BASE=false
 
 # Install dependencies
 RUN pip install --upgrade pip && \

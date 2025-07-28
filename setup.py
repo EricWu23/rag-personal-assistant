@@ -26,6 +26,7 @@ setup(
         "gunicorn",
         "pydantic>=1.10,<3",
         "tqdm",
+        "sentence-transformers",
     ],
     author="Yujiang Wu",
     description="A RAG-based personal assistant using LangChain and OpenAI",
